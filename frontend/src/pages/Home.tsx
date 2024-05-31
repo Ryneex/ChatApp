@@ -2,14 +2,10 @@ import { IoMdPeople } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import appStore from "@/store/appStore";
 import { useSnapshot } from "valtio";
-import { useEffect } from "react";
 
 export default function Home() {
     const { rooms } = useSnapshot(appStore);
     const navigate = useNavigate();
-    useEffect(() => {
-        console.log(rooms);
-    }, [rooms]);
 
     return (
         <div className="h-full w-fh-full p-5 flex flex-wrap bg-slate-100 gap-5">
