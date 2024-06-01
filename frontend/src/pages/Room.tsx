@@ -59,6 +59,7 @@ export default function Room() {
 
     async function handleSendMessage(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        if (!message) return;
         io.emit("roomMessage", { message, roomId: params.id, name });
     }
 
