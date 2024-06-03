@@ -4,9 +4,10 @@ import { io } from "@/main";
 import appStore from "@/store/appStore";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { IoIosSend, IoMdPeople } from "react-icons/io";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSnapshot } from "valtio";
 import { IChat } from "../../../src/types/types";
+import { GoHome } from "react-icons/go";
 
 export default function Room() {
     const params = useParams();
@@ -60,14 +61,19 @@ export default function Room() {
     async function handleSendMessage(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if (!message) return;
-        io.emit("roomMessage", { message, roomId: params.id, name });
+        io.emit("roomMessage", { message, roomId: params.id });
     }
 
     return (
         <div className="w-full h-full flex items-center justify-center">
-            <div className="w-full h-full max-w-5xl max-h-[600px] bg-white border shadow-sm rounded-md flex flex-col">
-                <div className="h-14 border-b flex items-center justify-between px-3">
-                    <h1 className="font-semibold">{rooms.find((e) => e.id === params.id)?.name}</h1>
+            <div className="w-full h-full xl:max-w-5xl xl:max-h-[600px] bg-white border shadow-sm rounded-md flex flex-col">
+                <div className="h-14 border-b flex items-center justify-between gap-4 px-3">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                        <h1 className="font-semibold truncate">{rooms.find((e) => e.id === params.id)?.name}</h1>
+                        <Link to="/">
+                            <GoHome className="text-xl" />
+                        </Link>
+                    </div>
                     <div className="gap-2 flex items-center">
                         <span className="text-sm">{rooms.find((e) => e.id === params.id)?.sockets.length}</span> <IoMdPeople />
                     </div>
