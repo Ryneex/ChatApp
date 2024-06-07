@@ -1,7 +1,7 @@
 import { Button } from "@/components/shadcn/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/shadcn/ui/dialog";
 import { Input } from "@/components/shadcn/ui/input";
-import { io } from "@/main";
+import { io } from "@/config/socket";
 import { nameValidator } from "@/validations/name.validator";
 import { FormEvent, useState } from "react";
 

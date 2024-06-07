@@ -1,6 +1,5 @@
 import { Button } from "@/components/shadcn/ui/button";
 import { Input } from "@/components/shadcn/ui/input";
-import { io } from "@/main";
 import appStore from "@/store/appStore";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { IoIosSend, IoMdPeople } from "react-icons/io";
@@ -8,6 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useSnapshot } from "valtio";
 import { IChat } from "../../../src/types/types";
 import { GoHome } from "react-icons/go";
+import { io } from "@/config/socket";
 
 export default function Room() {
     const params = useParams();

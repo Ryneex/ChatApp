@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Room from "@/pages/Room";
 import { useEffect } from "react";
-import { io } from "./main";
 import appStore from "./store/appStore";
 import { toast } from "sonner";
+import { io } from "./config/socket";
 
 export default function App() {
     useEffect(() => {
