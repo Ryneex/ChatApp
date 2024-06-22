@@ -7,7 +7,7 @@ export function removeRoomIfNoActivity(id: string, interval: number) {
     // Remove the room if it's inactive for too long
     if (!room.sockets.length && room.lastActivity < Date.now() - 30000) {
         clearInterval(interval);
-        rooms.splice(roomIndex, roomIndex + 1);
+        rooms.splice(roomIndex, 1);
         io.emit("rooms", rooms);
     }
 }
